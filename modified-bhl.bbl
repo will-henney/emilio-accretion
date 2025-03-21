@@ -1,0 +1,37 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Bondi} \& {Hoyle}}{{Bondi} \&
+  {Hoyle}}{1944}]{Bondi:1944a}
+{Bondi} H.,  {Hoyle} F.,  1944, \mn@doi [\mnras] {10.1093/mnras/104.5.273},
+  \href {https://ui.adsabs.harvard.edu/abs/1944MNRAS.104..273B} {104, 273}
+
+\bibitem[\protect\citeauthoryear{{Hoyle} \& {Lyttleton}}{{Hoyle} \&
+  {Lyttleton}}{1939}]{Hoyle:1939a}
+{Hoyle} F.,  {Lyttleton} R.~A.,  1939, \mn@doi [Proceedings of the Cambridge
+  Philosophical Society] {10.1017/S0305004100021150}, \href
+  {https://ui.adsabs.harvard.edu/abs/1939PCPS...35..405H} {35, 405}
+
+\bibitem[\protect\citeauthoryear{{Tejeda} \& {Toalá}}{{Tejeda} \&
+  {Toalá}}{2025}]{Tejeda:2025a}
+{Tejeda} E.,  {Toalá} J.~A.,  2025, \mn@doi [\apj] {10.3847/1538-4357/ada953},
+  \href {https://ui.adsabs.harvard.edu/abs/2025ApJ...980..226T} {980, 226}
+
+\makeatother
+\end{thebibliography}

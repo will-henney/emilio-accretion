@@ -1,0 +1,301 @@
+\documentclass[useAMS, usenatbib, a4paper]{mnras}
+\pdfsuppresswarningpagegroup=1
+\usepackage[spanish,es-minimal,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\let\Bbbk\relax
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{xcolor}
+\usepackage{fixltx2e}
+\usepackage{hyperref}
+\usepackage{savesym}
+\savesymbol{tablenum}
+\usepackage{siunitx}
+\restoresymbol{SIX}{tablenum}
+\usepackage{newtxtext}
+\usepackage[varg,varvw,smallerops]{newtxmath}
+\usepackage{xfrac} % for the \sfrac macro
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of lrc column types
+\newcolumntype{R}{>{$}r<{$}} 
+\newcolumntype{C}{>{$}c<{$}}
+\hypersetup{colorlinks=True, linkcolor=blue!50!black, citecolor=black,
+  urlcolor=blue!50!black}
+\usepackage{etoolbox}
+\robustify\bfseries
+\robustify\itshape
+\usepackage{enumerate}
+\bibliographystyle{mnras}
+\sisetup{
+  % explicit""+" is useful for velocities
+  retain-explicit-plus = true,
+  % prefer 10^6 over 1 x 10^6
+  retain-unity-mantissa = false,
+  % Use x +/- e instead of x(e)  
+  separate-uncertainty = true,
+  % Make sure to pick up bold font when used in section heading for instance
+  detect-weight = true,
+  table-align-uncertainty = true,
+  table-align-comparator = true,
+}
+\DeclareSIUnit\msun{\text{M\ensuremath{_\odot}}}
+\DeclareSIUnit\lsun{\text{L\ensuremath{_\odot}}}
+\DeclareSIUnit\zsun{\text{Z\ensuremath{_\odot}}}
+\DeclareSIUnit\angstrom{\text{\AA}}
+
+% A better \ion command that works in more circumstances
+\newcommand\ION[2]{#1\,\scalebox{0.9}[0.8]{\uppercase{#2}}}
+\newcounter{ionstage}
+\renewcommand{\ion}[2]{\setcounter{ionstage}{#2}% 
+  \ensuremath{\mathrm{#1\,\scriptstyle\Roman{ionstage}}}}
+\newcommand\hii{\ion{H}{2}}
+
+
+
+\newcommand\wind{\ensuremath{_{\mathrm{w}}}}
+\newcommand\mdwind{\ensuremath{\dot M\wind}}
+\newcommand\orb{\ensuremath{_{\mathrm{o}}}}
+\newcommand\rel{\ensuremath{_{\mathrm{r}}}}
+\newcommand\Hill{\ensuremath{_{\mathrm{\scriptscriptstyle H}}}}
+\newcommand\bhl{\ensuremath{_{\mathrm{\scriptscriptstyle B}}}}
+\newcommand\Tej{\ensuremath{_{\mathrm{\scriptscriptstyle T}}}}
+\newcommand\acc{\ensuremath{_{\mathrm{acc}}}}
+\newcommand\mdacc{\ensuremath{\dot M\acc}}
+
+\title[Wind accretion in a circular binary system]
+{
+  Wind accretion in a circular binary system  
+}
+
+\author[Henney et al.]{
+  William J. Henney\textsuperscript{1}\thanks{w.henney@irya.unam.mx}
+  \\
+  \textsuperscript{1}\foreignlanguage{spanish}{%
+    Instituto de Radioastronomía y
+    Astrofísica, Universidad Nacional Autónoma de México, Apartado
+    Postal 3-72, 58090 Morelia, Michoacán, Mexico}\\
+}
+
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2024}
+
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+
+
+\begin{abstract}
+  Commentary on \citet{Tejeda:2025a}.
+\end{abstract}
+
+\begin{keywords}
+Binary stars -- stellar winds -- stellar accretion
+\end{keywords}
+%\facilities{VLT:Yepun (MUSE); OANSPM:2.1m (Mezcal); Keck (HIRES)}
+%\object{M42}
+
+\section{Introduction}
+\label{sec:introduction}
+
+\section{Binary system and wind parameters}
+\label{sec:binary-syst-param}
+
+Consider a binary system in which the secondary star with mass \(M_2\) accretes from the wind of the primary star with mass \(M_1\).
+The orbit is assumed to be circular with separation \(r\).
+The orbital speed of the secondary in the rest frame of the primary is \(v\orb\).
+Kepler's laws gives the orbital period \(T\) as
+\begin{equation}
+  \label{eq:period}
+  T = 2\pi G \bigl(M_1 + M_2\bigr) / v\orb^3 = 2\pi r / v_0. 
+\end{equation}
+
+The isotropic stellar wind from the primary has mass-loss rate \(\dot M\wind\) and hypersonic terminal velocity \(v\wind\).
+The undisturbed wind density \(\rho\wind\) at the position of the secondary is therefore
+\begin{equation}
+  \label{eq:rho-wind}
+  \rho\wind = \mdwind / 4\pi r^2 v\wind. 
+\end{equation}
+
+The orbital velocity is purely tangential and thus perpendicular to the purely radial wind velocity. The relative speed between the wind and the secondary star is therefore
+\begin{equation}
+  \label{eq:relative-velocity}
+  v\rel = \Bigl(v\wind^2 + v\orb^2\Bigr)^{1/2}.
+\end{equation}
+
+The system is characterized by two dimensionless parameters:
+\begin{equation}
+  \label{eq:mass-ratio}
+  \text{Mass ratio:}\quad q \equiv M_2 / \bigl(M_1 + M_2\bigr),
+\end{equation}
+\begin{equation}
+  \label{eq:velocity-ratio}
+  \text{Velocity ratio:}\quad w \equiv v\wind / v\orb.
+\end{equation}
+
+\section{Bondi--Hoyle--Littleton accretion}
+\label{sec:bondi-hoyle-littl}
+
+Following \citet{Hoyle:1939a, Bondi:1944a},
+the mass accretion rate is
+\begin{equation}
+  \label{eq:mdot-bhl}
+  \mdacc = \pi r\bhl^2 \, v\rel \, \rho\wind , 
+\end{equation}
+where
+\begin{equation}
+  \label{eq:radius-bhl}
+  r\bhl = 2 G M_2 / v\rel^2 
+\end{equation}
+is the accretion radius.
+From equations~(\ref{eq:period}, \ref{eq:relative-velocity}, \ref{eq:mass-ratio}, \ref{eq:velocity-ratio}) we find that the ratio of the accretion radius to the orbital radius is
+\begin{equation}
+  \label{eq:racc-over-r}
+  r\bhl / r = 2 q / \bigl(1 + w^2\bigr).
+\end{equation}
+
+We define a dimensionless accretion efficiency as the fraction of the stellar wind that is captured by the secondary:
+\begin{equation}
+  \label{eq:eta-bhl-def}
+  \eta\bhl \equiv \mdacc / \mdwind ,
+\end{equation}
+which from equations~(\ref{eq:rho-wind}, \ref{eq:mdot-bhl}) yields
+\begin{equation}
+  \label{eq:eta-bhl}
+  \eta\bhl = \frac{1}{4}
+  \biggl( \frac{v\rel}{v\wind} \biggr)
+  \biggl( \frac{r\bhl}{r}\biggr)^2 . 
+\end{equation}
+The boost of the relative wind speed due to the orbital motion is
+\begin{equation}
+  \label{eq:boost-ratio}
+  v\rel / v\wind =  w^{-1} \, \bigl(1 + w^2\bigr)^{1/2} ,
+\end{equation}
+which combine with equations~(\ref{eq:eta-bhl}, \ref{eq:racc-over-r}) implies
+\begin{equation}
+  \label{eq:eta-bhl-dimensionless}
+  \eta\bhl = \frac{q^2}{w \, \bigl(1 + w^2\bigr)^{3/2}} .
+\end{equation}
+
+The BHL analysis assumes that the wind density and velocity vector are constant
+over the entire accretion capture zone of radius \(r\bhl\).
+For accretion from a wind, this is only true in the limit that
+\(r\bhl \ll r\). 
+
+\section{A problematic geometric correction}
+\label{sec:Tejeda-geometry}
+
+\cite{Tejeda:2025a} point out an issue with equation~(\ref{eq:eta-bhl-dimensionless}) when the wind velocity is much smaller than the orbital velocity (\(w \ll 1\)): in the limit \(w \to 0\) then \(\eta\bhl \to q^2 / w\), which can become larger than unity.
+This is clearly non-physical since the mass accretion rate cannot exceed the wind mass-loss rate.
+They propose to remedy this deficiency by making a geometric correction
+to the mass accretion rate.
+\(\mdacc\) is multiplied by a factor of \(\cos\theta\),
+where \(\theta\) is the angle between the relative velocity vector
+and the radial direction from the primary,
+which accounts for
+\begin{center}
+  \begin{minipage}{0.8\linewidth}\small\itshape
+    \dots the projected area of the accretion cylinder's
+    cross section onto a sphere centered around the primary. This
+    projection accounts for the effective area capturing the wind.
+  \end{minipage}
+\end{center}
+This yields a different equation for the accretion efficiency:
+\begin{equation}
+  \label{eq:eta-tejeda-dimensionless}
+  \eta\Tej = \eta\bhl = \biggl( \frac{q}{1 + w^2} \biggr)^2 .
+\end{equation}
+This clearly resolves the issue mentioned above since as
+\(w \to 0\) then \(\eta\Tej \to q^2 \), guaranteeing that \(\eta\Tej < 1  \).
+On the other hand, in the opposite limit of large wind velocity
+the two efficiencies agree: as \(w \to \infty\) then \(\eta\Tej \to \eta\bhl \to q^2 / w^4\).
+
+However, the physical basis for making this ``correction'' is unclear.
+Unlike the BHL theory, which is entirely local
+to the rest frame of the accreting secondary,
+the correction factor introduces quantities from the rest frame of the primary,
+which casts doubt on its validity.
+
+For circular orbits \(\cos\theta = v\wind / v\rel\), so an alternative
+way of writing the Tejeda efficiency is
+\begin{equation}
+  \label{eq:eta-tejeda}
+  \eta\Tej = \frac{1}{4}
+  \biggl( \frac{r\bhl}{r}\biggr)^2
+  =  \frac{\pi \, r\bhl^2}{4 \pi \, r^2} ,
+\end{equation}
+which is simply the area covering factor of the BHL capture zone
+of a \emph{stationary} accretor.
+However, this is inconsistent with the well-defined physical limit
+for a fast-orbiting accretor, as we will show in the following section.
+
+\section{Asymptotic efficiency of a fast-orbiting accretor in a slow wind}
+\label{sec:fast-orbit-accr}
+
+During one orbital period, \(T\),
+the accretion capture zone will sweep out a torus that
+fully encircles the primary star
+with a total covering factor of \(r\bhl / r\).
+If \(T\) is sufficiently short compared with the time \(2 r\bhl / v\wind\) for the wind to cross the accretion capture zone, then all of the wind that passes within
+a distance \(r\bhl\) of the orbital path will be captured.
+This corresponds to \(w \ll 1\) and yields a limiting accretion efficiency of
+\begin{equation}
+  \label{eq:1}
+  \eta_{\lim} = \lim_{w \to 0} \frac{r\bhl}{r} = 2 q .
+\end{equation}
+Note that this is inconsistent with the Tejeda result,
+\(\eta\Tej \approx q^2\), in the same limit, casting further doubt on
+the correctness of that result.
+
+It is also inconsistent with the naive BHL result, \(\eta\bhl \to \infty\),
+so we clearly require \emph{some} correction to BHL.
+In the following section we outline a physically motivated correction
+that is consistent with \(\eta_{\lim}\).
+
+\section{Starvation by finite refill time}
+\label{sec:starv-finite-refill}
+\cite{Tejeda:2025a} discuss the refill time, which is the time
+needed for the wind to replenish the material inside the accretion torus
+(see previous section)
+but they do not explicitly calculate its influence on the accretion efficiency.
+However, we will show that consideration of this effect is
+entirely sufficient in order to eliminate
+the divergence of \(\eta\bhl\) for small \(w\).
+
+During a single orbital period, the wind will propagate a distance \(v\wind T\),
+which represents a fraction \(f\) of the diameter of the accretion torus:
+\begin{equation}
+  \label{eq:refill-fraction}
+  f = \frac{v\wind T}{2 r\bhl} \approx \frac{w (1 + w^2)}{q}
+\end{equation}
+
+
+\section{Gravitational influence of the primary}
+\label{sec:limit-hill-sphere}
+
+
+
+
+\bibliography{accretion-refs}
+
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
