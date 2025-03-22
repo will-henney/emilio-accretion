@@ -142,7 +142,7 @@ The system is characterized by two dimensionless parameters:
   \text{Velocity ratio:}\quad w \equiv v\wind / v\orb.
 \end{equation}
 
-\section{Bondi--Hoyle--Littleton accretion}
+\section{Bondi--Hoyle--Littleton (BHL) accretion}
 \label{sec:bondi-hoyle-littl}
 
 Following \citet{Hoyle:1939a, Bondi:1944a},
@@ -225,8 +225,12 @@ to the rest frame of the accreting secondary,
 the correction factor introduces quantities from the rest frame of the primary,
 which casts doubt on its validity.
 
-For circular orbits \(\cos\theta = v\wind / v\rel\), so an alternative
-way of writing the Tejeda efficiency is
+For circular orbits, one finds
+\begin{equation}
+  \label{eq:cos-theta}
+  \cos\theta = v\wind / v\rel ,
+\end{equation}
+so an alternative way of writing the Tejeda efficiency is
 \begin{equation}
   \label{eq:eta-tejeda}
   \eta\Tej = \frac{1}{4}
@@ -243,14 +247,19 @@ for a fast-orbiting accretor, as we will show in the following section.
 
 During one orbital period, \(T\),
 the accretion capture zone will sweep out a torus that
-fully encircles the primary star
-with a total covering factor of \(r\bhl / r\).
-If \(T\) is sufficiently short compared with the time \(2 r\bhl / v\wind\) for the wind to cross the accretion capture zone, then all of the wind that passes within
+fully encircles the primary star.
+If \(T\) is sufficiently short compared with the time \(2 r\bhl \sin \theta / v\wind\) for the wind to cross the accretion capture zone, then all of the wind that passes within
 a distance \(r\bhl\) of the orbital path will be captured.
-This corresponds to \(w \ll 1\) and yields a limiting accretion efficiency of
+This corresponds to the limit \(w \ll 1\), \(\theta \approx \pi/2\), for which
+the solid angle subtended at the primary by the torus is
+\begin{equation}
+  \label{eq:omega-torus}
+  \Omega = 2 \pi \int_{-r\bhl / r}^{r\bhl / r} d\mu = 4 \pi \, r\bhl / r
+\end{equation}
+Therefore, the limiting accretion efficiency is
 \begin{equation}
   \label{eq:1}
-  \eta_{\lim} = \lim_{w \to 0} \frac{r\bhl}{r} = 2 q .
+  \eta_{\lim} = \Omega / 4\pi = \lim_{w \to 0} \frac{r\bhl}{r} = 2 q .
 \end{equation}
 Note that this is inconsistent with the Tejeda result,
 \(\eta\Tej \approx q^2\), in the same limit, casting further doubt on
@@ -267,16 +276,68 @@ that is consistent with \(\eta_{\lim}\).
 needed for the wind to replenish the material inside the accretion torus
 (see previous section)
 but they do not explicitly calculate its influence on the accretion efficiency.
-However, we will show that consideration of this effect is
-entirely sufficient in order to eliminate
-the divergence of \(\eta\bhl\) for small \(w\).
+However, we will show that accounting for this effect is entirely sufficient
+to prevent the divergence of \(\eta\bhl\) for small \(w\).
 
-During a single orbital period, the wind will propagate a distance \(v\wind T\),
-which represents a fraction \(f\) of the diameter of the accretion torus:
+During a single orbital period, the wind will propagate a distance
 \begin{equation}
-  \label{eq:refill-fraction}
-  f = \frac{v\wind T}{2 r\bhl} \approx \frac{w (1 + w^2)}{q}
+  \label{eq:wind-propagation}
+  x = v\wind T = 2\pi w r ,
 \end{equation}
+where the second equality makes use of
+equations~(\ref{eq:period}, \ref{eq:velocity-ratio}).
+The radial thickness in the orbital plane of the accretion torus
+can be found by applying the cosine law and
+Taylor expansion in powers of \(r\bhl / r\) to yield
+\begin{equation}
+  \label{eq:torus-thickness-taylor}
+  h = 2 r\bhl \sin\theta
+  \biggl[
+  1 - \frac12 \bigl( r\bhl / r \bigr)^2 \cos^2\theta 
+  + \mathcal{O} \bigl( r\bhl / r \bigr)^4
+  \biggr].
+\end{equation}
+For small \((r\bhl / r) \cos\theta\) the term in square brackets is approximately unity,
+so from equations~(\ref{eq:boost-ratio}, \ref{eq:cos-theta}) we have
+\begin{equation}
+  \label{eq:torus-thickness-approx}
+  h \approx 2 r\bhl \sin\theta = 2 r\bhl \bigl(1 + w^2\bigr)^{-1/2}.
+\end{equation}
+Therefore the fraction of the thickness refilled by the wind is
+\begin{equation}
+  \label{eq:refill-linear-fraction}
+  f = x / h = \frac{\pi w \bigl(1 + w^2\bigr)^{3/2}}{2 q}. 
+\end{equation}
+If \(f < 1\), then a portion of the accretion surface \(\pi r\bhl^2\) is empty of wind,
+resulting in a reduction in the effective area by a factor \(\mathcal{F}\),
+which can be found for small \((r\bhl / r)\) from the standard formula
+for the area of a circular segment, yielding
+\begin{equation}
+  \label{eq:refill-area-fraction}
+  \mathcal{F} = 1 - \frac{2}{\pi} \biggl[
+  \cos^{-1} (f) \, - \, f\, \bigl(1 - f^2 \bigr)^{1/2}
+  \biggr]
+  \approx \frac{4 f}{\pi} 
+  ,
+\end{equation}
+where the final approximate equality is accurate for \(f < 0.5\).
+
+In this refill-limited case, the accretion efficiency is therefore given
+from equations~(\ref{eq:eta-bhl-dimensionless}, \ref{eq:refill-linear-fraction},
+\ref{eq:refill-area-fraction}) as
+\begin{equation}
+  \label{eq:eta-refill}
+  \eta_{\star} = \mathcal{F} \eta\bhl \approx 2 q ,
+\end{equation}
+which applies when \(w \la 0.64 q\).
+Note that this is exactly the same efficiency as the limiting value
+\(\eta_{\lim}\) from section~\ref{sec:fast-orbit-accr}.
+We have therefore shown how the asymptotic behavior of the accretion efficiency
+when the wind speed is small compared with the orbital speed
+can arise naturally from a reduction in the accretion area due to
+the ``hole'' in the wind that was cleared out during the previous orbit.
+By using the exact expression for \(\mathcal{F} \) in equation~(\ref{eq:refill-area-fraction}),
+we achieve a smooth transition from \(\eta_{\star}\) to \(\eta\bhl\) for \(w > q\).
 
 
 \section{Gravitational influence of the primary}
