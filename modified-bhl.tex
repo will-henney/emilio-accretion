@@ -142,8 +142,8 @@ The system is characterized by two dimensionless parameters:
   \text{Velocity ratio:}\quad w \equiv v\wind / v\orb.
 \end{equation}
 
-\section{Bondi--Hoyle--Littleton (BHL) accretion}
-\label{sec:bondi-hoyle-littl}
+\section{Bondi--Hoyle--Lyttleton (BHL) accretion}
+\label{sec:bondi-hoyle-lyttl}
 
 Following \citet{Hoyle:1939a, Bondi:1944a},
 the mass accretion rate is
@@ -272,6 +272,30 @@ that is consistent with \(\eta_{\lim}\).
 
 \section{Starvation by finite refill time}
 \label{sec:starv-finite-refill}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/refill-fraction}
+  \caption{Refill fraction of the accretion surface area \(\mathcal{F}\)
+    from equation~(\ref{eq:refill-area-fraction}).
+    The dashed line shows the linear approximation \(\mathcal{F} = 4 f / \pi\).
+  }
+  \label{fig:area-F}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/eta-finite-refill}
+  \caption{
+    Accretion efficiency \(\eta_\star\) accounting for finite refill time (solid lines)
+    from equations~(\ref{eq:refill-linear-fraction}, \ref{eq:refill-area-fraction}, \ref{eq:eta-refill}).
+    Dashed lines show the naive BHL efficiency \(\eta\bhl\) from
+    equation~(\ref{eq:eta-bhl-dimensionless}).
+  }
+  \label{fig:eta-finite-refill}
+\end{figure}
+
+
 \cite{Tejeda:2025a} discuss the refill time, which is the time
 needed for the wind to replenish the material inside the accretion torus
 (see previous section)
@@ -320,7 +344,8 @@ for the area of a circular segment, yielding
   \approx \frac{4 f}{\pi} 
   ,
 \end{equation}
-where the final approximate equality is accurate for \(f < 0.5\).
+where the final approximate equality is accurate for \(f \la 0.4\).
+This function is shown in Figure~\ref{fig:area-F}.
 
 In this refill-limited case, the accretion efficiency is therefore given
 from equations~(\ref{eq:eta-bhl-dimensionless}, \ref{eq:refill-linear-fraction},
@@ -338,14 +363,27 @@ can arise naturally from a reduction in the accretion area due to
 the ``hole'' in the wind that was cleared out during the previous orbit.
 By using the exact expression for \(\mathcal{F} \) in equation~(\ref{eq:refill-area-fraction}),
 we achieve a smooth transition from \(\eta_{\star}\) to \(\eta\bhl\) for \(w > q\).
+The resultant efficiency is plotted against \(w\) for different
+values of \(q\) in Figure~\ref{fig:eta-finite-refill}. 
 
 
 \section{Gravitational influence of the primary}
 \label{sec:limit-hill-sphere}
 
+The derivation of the Bondi--Hoyle-Lyttleton accretion rate
+(section~\ref{sec:bondi-hoyle-lyttl})
+treats the gravity of the accreting star in isolation.
+However, in a binary system this is only valid within the
+``gravitational sphere of influence'' of the secondary
+\citetext{\citealp{Souami:2020a} and references therein}.
+We will quantify this by considering the radius of the ``Hill sphere'',
+which corresponds to the Roche lobe of the secondary,
+extending between the Lagrange points \(L_1\) and \(L_2\).
 
+at sufficiently small radii
+\(r \ll r\Hill\) from the secondary, where \(r\Hill\) is the Hill radius
 
-
+z
 \bibliography{accretion-refs}
 
 
