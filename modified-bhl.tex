@@ -366,9 +366,45 @@ we achieve a smooth transition from \(\eta_{\star}\) to \(\eta\bhl\) for \(w > q
 The resultant efficiency is plotted against \(w\) for different
 values of \(q\) in Figure~\ref{fig:eta-finite-refill}. 
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/roche-potential-trajectories}
+  \caption{
+    Effective potentials and wind trajectories in rotating frame.
+  }
+  \label{fig:roche-potential-trajectories}
+\end{figure}
 
 \section{Gravitational influence of the primary}
 \label{sec:limit-hill-sphere}
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/roche-escape-L4-radii-vs-q}
+  \caption{
+    Gravitational escape radii (solid lines) as function of mass ratio,
+    \(q\), and for different values of the wind-to-orbital speed ratio, \(w\).
+    These correspond to the minimum radius around the secondary where the inflowing wind
+    has enough kinetic energy to escape past the \(L_4, L_5\) potential maximum.
+    The corresponding BHL values for an isolated accretor are shown dashed lines.
+    The thick solid black line shows the equivalent-volume radius of the Roche surface. 
+  }
+  \label{fig:escape-radii}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/eta-roche-finite-refill}
+  \caption{
+    Same as Figure~\ref{fig:eta-finite-refill} but
+    also accounting for tidal perturbation by the primary. 
+    Dashed lines show the naive BHL efficiency \(\eta\bhl\) from
+    equation~(\ref{eq:eta-bhl-dimensionless}).
+  }
+  \label{fig:eta-tidal-perturbation}
+\end{figure}
+
+
+
 
 The derivation of the Bondi--Hoyle-Lyttleton accretion rate
 (section~\ref{sec:bondi-hoyle-lyttl})
