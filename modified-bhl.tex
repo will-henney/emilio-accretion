@@ -64,7 +64,7 @@
 \newcommand\Tej{\ensuremath{_{\mathrm{\scriptscriptstyle T}}}}
 \newcommand\acc{\ensuremath{_{\mathrm{acc}}}}
 \newcommand\mdacc{\ensuremath{\dot M\acc}}
-
+\newcommand\qq{\ensuremath{\tilde{q}}}
 \title[Wind accretion in a circular binary system]
 {
   Wind accretion in a circular binary system  
@@ -412,14 +412,38 @@ treats the gravity of the accreting star in isolation.
 However, in a binary system this is only valid within the
 ``gravitational sphere of influence'' of the secondary
 \citetext{\citealp{Souami:2020a} and references therein}.
-We will quantify this by considering the radius of the ``Hill sphere'',
-which corresponds to the Roche lobe of the secondary,
-extending between the Lagrange points \(L_1\) and \(L_2\).
+We will quantify this by considering equipotential
+surfaces in the rotating frame of the binary orbit,
+which are characterized by the five equilibrium Lagrange points
+\(L_1\) to \(L_5\).
+The gravitational attraction of the secondary dominates
+over tidal perturbations only within the Roche surface
+of the secondary, which 
+which extends between the Lagrange points \(L_1\) and \(L_2\),
+see Figure~\ref{fig:roche-potential-trajectories}.
 
-at sufficiently small radii
-\(r \ll r\Hill\) from the secondary, where \(r\Hill\) is the Hill radius
+Following \citet{Seidov:2004a},
+the effective potential in the rotating frame
+can be written in non-dimensional form as
+\begin{multline}
+  \label{eq:effective-potential}
+  U(x, y, z) = (x - q)^2 + y^2               % centrifugal
+  + \frac{-2 (1 - q) (1 - \Gamma)}{\bigl(x^2 + y^2 + z^2\bigr)^{1/2}} \\ % primary
+  + \frac{-2 q}{\bigl((x-1)^2 + y^2 + z^2\bigr)^{1/2}}   % secondary
+\end{multline}
+where \((x, y, z)\) are orthogonal Cartesian coordinates
+in units of the binary separation, \(a\),
+with origin at the position of the primary star. The orbit lies in the \(xy\) plane,
+with the secondary located at \((x, y, z) = (1, 0, 0)\).\footnote{%
+  Note that the mass ratio \(q = M_2 / (M_1 + M_2)\) used in this paper differs from that
+  employed in some of the binary star literature, which we denote \(\qq = M_2 / M_1\)
+  with the conversion \(\qq = q / (1 - q)\).
+}
+The potential \(U\) is in units of \(G (M_1 + M_2) / (2 a) = \frac12 \Omega^2\), where \(\Omega = 2 \pi / P = v\orb / a\) is the orbital angular velocity.
+The acceleration of the primary's wind due to radiation pressure on dust grains is
+accounted for by an effective Eddington factor \(\Gamma = L_1 / L_{\mathrm{Edd}}\), but we will initially set \(\Gamma = 0\). 
 
-z
+
 \bibliography{accretion-refs}
 
 
