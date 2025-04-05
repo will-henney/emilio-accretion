@@ -145,12 +145,7 @@ The system is characterized by two dimensionless parameters:
 \section{Bondi--Hoyle--Lyttleton (BHL) accretion}
 \label{sec:bondi-hoyle-lyttl}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\linewidth]{notebooks/hoyle-lyttleton-trajectories}
-  \caption{Bondi--Hoyle--Lyttleton model for accretion}
-  \label{fig:bhl}
-\end{figure}
+
 Following \citet{Hoyle:1939a, Bondi:1944a},
 the mass accretion rate is
 \begin{equation}
@@ -454,10 +449,85 @@ accounted for by an effective Eddington factor \(\Gamma = L_1 / L_{\mathrm{Edd}}
 
 \appendix
 
-\section{Details of Hoyle--Lyttleton accretion}
+\section{Details of Bondi--Hoyle--Lyttleton accretion}
 \label{sec:deta-hoyle-lyttl}
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{notebooks/hoyle-lyttleton-trajectories}
+  \caption{Bondi--Hoyle--Lyttleton model for accretion}
+  \label{fig:bhl}
+\end{figure}
+
+The original study of \citep{Hoyle:1939a} considered the
+particle trajectories of a plane parallel stream of ``clouds'' in the
+gravitational potential of a star
+See Figure~\ref{fig:bhl}, which shows the trajectories in cylindrical polar
+coordinates \((x, y)\) in the frame of reference in which the star is stationary
+and located at the origin. 
+The axial coordinate \(x\) is along the initial direction of the stream
+and \(y\) is the cylindrical radius. 
+
+The incoming trajectories are hyperbolic as they pass the star,
+but the fluid nature of the clouds is accounted for
+by assuming that they collide after converging on the downstream symmetry axis
+(\(+x\) axis in Figure~\ref{fig:bhl})
+to form a linear wake.
+The \(y\) component of momentum transverse to the axis is cancelled by
+a corresponding cloud that passed on the opposite side of the star.
+By conservation of angular momentum,
+it can be shown that the \(x\) component of velocity at \(y = 0\)
+is simply equal to the far-field upstream velocity at \(x \to -\infty\),
+denoted by \(v\).
+
+By considering the total energy per unit mass in the wake (kinetic plus gravitational)
+\begin{equation}
+  \label{eq:3}
+  E = \frac12 v^2 - \frac{G M}{x}
+\end{equation}
+one finds the condition for the clouds to be accreted (\(E < 0\)) is 
+\begin{equation}
+  \label{eq:x-accretion-condition}
+  x < r\bhl = \frac{2 G M}{v^2} .
+\end{equation}
+
+Each hyperbolic trajectory can be written in parametric form as
+\begin{align}
+  \label{eq:hyperbola-xy-parametric-x}
+  x &= r(\theta) \cos(\theta + \theta_\infty) \\
+  \label{eq:hyperbola-xy-parametric-y}
+  y &= r(\theta) \sin(\theta + \theta_\infty)
+\end{align}
+where
+\begin{equation}
+  \label{eq:hyperbola-r-theta}
+  r(\theta) = \frac{p}{1 + e \cos\theta}.
+\end{equation}
+The hyperbola is characterized by its eccentricity, \(e\),
+semi-latus rectum, \(p\), and asymptote angle, \(\theta_\infty\).
+For a trajectory with impact parameter \(y_0\), these are given by
+\begin{align}
+  \label{eq:hyperbola-eccentricity}
+  e & = \bigl( 1 + 4 y_0^2 / r\bhl^2 \bigr)^{1/2},\\
+  \label{eq:hyperbola-p}
+  p / r\bhl & = 2 y_0^2 / r\bhl^2, \\
+  \label{eq:hyperbola-theta-inf}
+  \theta_\infty & = \cos^{-1} e^{-1} .
+\end{align}
+From equation~(\ref{eq:hyperbola-xy-parametric-y}), \(y = 0\) when \(\theta = -\theta_\infty\),
+so from (\ref{eq:hyperbola-xy-parametric-x}, \ref{eq:hyperbola-r-theta})
+the trajectory crosses the \(x\) axis at \(x = p / 2\).
+Hence, from (\ref{eq:x-accretion-condition}, \ref{eq:hyperbola-p})
+the accretion condition is \(y_0 < r\bhl\). We therefore obtain the
+mass accretion rate given in equation~(\ref{eq:mdot-bhl}) of section~\ref{sec:bondi-hoyle-lyttl}.
 
 
+
+
+
+If radiative cooling is sufficiently efficient then the gas flow is
+approximately isothermal, in which case \emph{no bow shock forms}.
+There is only the conical tail shock on surface of the wake
+\citep{Ruffert:1996a}.
 
 % Don't change these lines
 \bsp	% typesetting comment
