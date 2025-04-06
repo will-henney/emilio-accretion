@@ -1,0 +1,76 @@
+
+* Equation of state
+- Teuns et al have adiabatic models that get to 1e5 K post shock, for which they estimate cooling times of 10 s, as compared with dynamic time of order a year!
+  - density of order 1e9 pcc
+- So this fully justifies the isothermal case
+
+* Detached or attached shock?
+- This ought to depend on the shock popar
+  - There is a maximum angle that the flow can be deviated by an oblique shock, which depends on the gamma
+  - Supposedly this is sin theta = 1 / sqrt(gamma) for M \to \infty
+    - 50.77 degrees for gamma = 5/3
+  - And for \gamma = 1 it is sin theta = 1 / M
+  - However I need to check this, since it does not look right
+  - 
+
+* Papers on accretion
+** Theuns, Boffin & Jorissen 1996
+- /cited by Tejeda/
+- SPH simulations of accretion in binary systems
+- Pretty low resolution, but should be good as far as it goes
+- Considers cases of \gamma = 1, 1.1, 1.5 but mainly presents results on 1.5
+- Their model has q = 0.33 and w = 0.4
+- They find \eta = 0.01 - 0.02 for \gamma = 1.5, and 0.08 for the other models
+  - The BHL value is 0.2, although they say 0.1 - 0.2 since they are including the \alpha factor from BH
+- They find hydrodynamic thrust and gravitational drag cancel each other out for circular orbits
+- They assume \Gamma_edd = 1 in their simulations, so the primary has no effect on the gas!
+  - Radiation pressure exactly cancels gravity
+  - So there is nothing like the Roche lobe
+- They get a flow structure that looks nothing like the BHL picture, at least for \gamma = 5/3
+- 
+** Theuns 1993
+- Earlier discussion of flow structures in same simulations
+- The adiabatic simulation is a complete mess
+- The isothermal one looks somewhat more ordered, at least in the xz and yz planes
+  - But in the xy plane it forms an accretion disk, which means you do not see the accretion column very well
+  - This might be an artefact of the low resolution though
+- In all the simulations you see large scale spiral shocks that make a spiral arm
+  - This is a second source of accreting matter for the secondary
+** Antoni et al 2019
+- The Evolution of Binaries in a Gaseous Medium: Three-dimensional Simulations of Binary Bondi–Hoyle–Lyttleton Accretion
+- This is a slightly different problem form the one that we are considering
+  - It is interaction of a binary with a stream that comes from the outside, not form one of the stars
+- But it has some modern simulations and a section on previous numerical simulations that is useful to get me up to date on the literature
+- They only simulate the adiabatic case
+  - They have a very nice sharp bow shock, with subsonic radial accretion inside it
+** Blondin & Raymer 2012
+- Adiabatic simulations of classical HL accretion from a uniform stream
+- Not much that we can take from it for our case, but is a good example to cite for the bow shock case
+- The flow does end up in the wake and hitting the star from the back
+- Breathing overstability of the bow shock produces oscillation in the accretion rate of order 10%
+** de Val-Borro et al 2018
+- Three-dimensional hydrodynamical models of wind and outburst-related accretion in symbiotic systems
+- *not cited by Tejeda*
+  - but they do cite an earlier 2009 paper
+- Again, adiabatic simulations
+- Strangely, they get a mass accretion rate that is even larger than the BHL rate
+- Simulation parameters, inspired by CH Cyg
+  - P = 15.6 yr
+  - a = 8.5 au
+  - So orbital velocity is 2 pi 8.5 au / 15.6 y = 16 km/s
+  - Wind velocity of 20 to 50 km/s
+    - So w = 1.3 to 3
+  - Stellar masses
+    - M_1 = 2 Msun
+    - M_2 = 0.56 Msun
+    - q = 0.21875
+  - So predicted \eta from BHL is q^2 / w (1 + w^2)^1.5
+    - q, w = 0.21875, 1.3 => \eta = 8.3e-3
+    - q, w = 0.21875, 3 => \eta = 5.0e-4
+  - However, their fig 5 indicates that they think that 0.1 is the typical efficiency, /so that is weird/
+  - They use an Eddington factor of \Gamma = 0.5
+** El Mellah et al 2020
+- Wind morphology around cool evolved stars in binaries The case of slowly accelerating oxygen-rich outflows
+- They are more interested in the large scale spiral shock
+- They characterise their models by f, which they call the "dust condensation radius filling factor", which is the ration of the wind launch radius to the Roche lobe
+  - They use values of 0.05 and 0.80

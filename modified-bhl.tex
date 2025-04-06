@@ -458,22 +458,30 @@ accounted for by an effective Eddington factor \(\Gamma = L_1 / L_{\mathrm{Edd}}
   \label{fig:bhl}
 \end{figure}
 
-The original study of \citep{Hoyle:1939a} considered the
+\subsection{Gravitational focusing into a linear wake}
+\label{sec:grav-focus-into}
+
+The original study of \citet{Hoyle:1939a} considered the
 particle trajectories of a plane parallel stream of ``clouds'' in the
 gravitational potential of a star
-See Figure~\ref{fig:bhl}, which shows the trajectories in cylindrical polar
-coordinates \((x, y)\) in the frame of reference in which the star is stationary
+See Figure~\ref{fig:bhl}, which shows the trajectories in a
+constant-\(\phi\) cut through cylindrical polar
+coordinates \((x, y, \phi)\) in the frame of reference in which the star is stationary
 and located at the origin. 
-The axial coordinate \(x\) is along the initial direction of the stream
-and \(y\) is the cylindrical radius. 
+The axial coordinate \(x \in [-\infty, \infty]\) is along the initial direction of the stream
+and \(y  \in [-\infty, \infty]\) is the signed cylindrical radius, while \(\phi \in [0, \pi]\) is
+the azimuthal angle.\footnote{Note that \(y\) is allowed to be negative, so \(\phi\) is restricted to the half-circle.}
 
 The incoming trajectories are hyperbolic as they pass the star,
 but the fluid nature of the clouds is accounted for
 by assuming that they collide after converging on the downstream symmetry axis
 (\(+x\) axis in Figure~\ref{fig:bhl})
 to form a linear wake.
-The \(y\) component of momentum transverse to the axis is cancelled by
-a corresponding cloud that passed on the opposite side of the star.
+A streamline with incoming impact parameter \(y = y_0\) as \(x \to \infty\)
+crosses the axis at \(x = x_0\), \(y = 0\).
+The \(y\) component of momentum transverse to the axis is cancelled out by
+a corresponding identical cloud with impact parameter \(-y_0\)
+that passed on the opposite side of the star.
 By conservation of angular momentum,
 it can be shown that the \(x\) component of velocity at \(y = 0\)
 is simply equal to the far-field upstream velocity at \(x \to -\infty\),
@@ -481,13 +489,13 @@ denoted by \(v\).
 
 By considering the total energy per unit mass in the wake (kinetic plus gravitational)
 \begin{equation}
-  \label{eq:3}
-  E = \frac12 v^2 - \frac{G M}{x}
+  \label{eq:total-energy}
+  E = \frac12 v^2 - \frac{G M}{x_0}
 \end{equation}
 one finds the condition for the clouds to be accreted (\(E < 0\)) is 
 \begin{equation}
   \label{eq:x-accretion-condition}
-  x < r\bhl = \frac{2 G M}{v^2} .
+  x_0 < r\bhl = \frac{2 G M}{v^2} .
 \end{equation}
 
 Each hyperbolic trajectory can be written in parametric form as
@@ -505,6 +513,7 @@ where
 The hyperbola is characterized by its eccentricity, \(e\),
 semi-latus rectum, \(p\), and asymptote angle, \(\theta_\infty\).
 For a trajectory with impact parameter \(y_0\), these are given by
+\citetext{e.g., \citealp{Landau:1976a}}
 \begin{align}
   \label{eq:hyperbola-eccentricity}
   e & = \bigl( 1 + 4 y_0^2 / r\bhl^2 \bigr)^{1/2},\\
@@ -515,13 +524,30 @@ For a trajectory with impact parameter \(y_0\), these are given by
 \end{align}
 From equation~(\ref{eq:hyperbola-xy-parametric-y}), \(y = 0\) when \(\theta = -\theta_\infty\),
 so from (\ref{eq:hyperbola-xy-parametric-x}, \ref{eq:hyperbola-r-theta})
-the trajectory crosses the \(x\) axis at \(x = p / 2\).
+the trajectory crosses the \(x\) axis at \(x_0 = p / 2\).
 Hence, from (\ref{eq:x-accretion-condition}, \ref{eq:hyperbola-p})
 the accretion condition is \(y_0 < r\bhl\). We therefore obtain the
 mass accretion rate given in equation~(\ref{eq:mdot-bhl}) of section~\ref{sec:bondi-hoyle-lyttl}.
 
+Note that, although the critical values of \(x_0\) and \(y_0\) are
+both equal to \(r\bhl\),
+the relationship between these is non-linear for a general streamline:
+\begin{equation}
+  \label{eq:y0-vs-x0}
+  \frac{y_0}{r\bhl} = \Bigl( \frac{x_0}{r\bhl} \Bigr)^{1/2} .
+\end{equation}
 
-
+\subsection{Mass and momentum flux in the accretion column}
+\label{sec:mass-flux-accretion}
+Equation~(\ref{eq:x-accretion-condition}) assumes that each particle
+in the wake moves independently under gravity, but this is a very
+poor approximation because the collisional mean free path is typically
+much smaller than \(r\bhl\).
+\citet{Bondi:1944a} addressed this deficiency by analysing mass and momentum
+conservation in the accretion wake, which is assumed to be roughly conical
+with a small opening angle.
+\citet{Edgar:2004a} provides an extended exegesis of their argument. 
+It is found that thermal pressure gradients in the wake can be neglected 
 
 
 If radiative cooling is sufficiently efficient then the gas flow is
