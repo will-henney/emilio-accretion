@@ -66,6 +66,7 @@
     - q = 0.21875
   - So predicted \eta from BHL is q^2 / w (1 + w^2)^1.5
     - q, w = 0.21875, 1.3 => \eta = 8.3e-3
+      - 0.21875**2 / 1.3 (1 + 1.3**2)**1.5 = 8.343e-03
     - q, w = 0.21875, 3 => \eta = 5.0e-4
   - However, their fig 5 indicates that they think that 0.1 is the typical efficiency, /so that is weird/
   - They use an Eddington factor of \Gamma = 0.5
@@ -74,3 +75,76 @@
 - They are more interested in the large scale spiral shock
 - They characterise their models by f, which they call the "dust condensation radius filling factor", which is the ration of the wind launch radius to the Roche lobe
   - They use values of 0.05 and 0.80
+  - 0.0254
+** Malfait et al 2024
+- Impact of H I cooling and study of accretion disks in asymptotic giant branch wind-companion smoothed particle hydrodynamic simulations
+- Finally a realistic simulation that includes cooling!
+- They find accretion efficiencies 2 times larger than the BHL value
+  - 4 to 21%
+- Simulation parameters:
+  - M_1 = 1.5, M_2 = 1, q = 0.4
+  - a = 6 au
+    - G (M_1 + M_2) / 2 a  = v^2 / 2
+    - V_o = 19.2 km/s
+      - from sqrt(6.673e-8 2.5 1.989e33 / 6 1.49597870691e13 ) / 1.0e5
+  - Wind velocities of 5, 10, 20 km/s
+    - But these are launch velocities, at the secondary they are
+      - 12.7, 15, 22.8 
+    - So w = 0.6615, 0.7812, 1.1875
+    - This means eta = q^2 / w (1 + w^2)^1.5
+      - 0.4**2 / 0.6615 (1 + 0.6615**2)**1.5 = 0.1403
+      - 0.4**2 / 0.7812 (1 + 0.7812**2)**1.5 = 0.1002
+      - 0.4**2 / 1.1875 (1 + 1.1875**2)**1.5 = 0.0360
+    - But they seem to 
+- Good discussion in their Section 4 of prior work that found an accretion disk to form
+- Complicated morphology of the density structures
+  - In the orbital plane we get an Archimedean spiral, which seems to be due to the following
+    - The non-accreted material in the wake
+- *Look at the velocities in the disk from Figure 14* and decide if there is really a bow shock or not
+  - compare with densities in figs 8, 9, 10
+
+*** Calculate accretion disk sizes
+- Compare with data in Table 4
+** Huarte-Espinosa et al 2013
+- The Formation and Evolution of Wind-Capture Disks In Binary Systems
+- Has analytical estimates and AMR hydro simulations of isothermal wind accretion
+- Very clear presentation of results
+- Introduces the concept of the bending of the BHL accretion column, which means it does not fall directly onto the star, but instead has a finite impact parameter, which leads to the formation of the accretion disk
+- quote
+  : It is, in fact, this off-center streaming of the accretion flow (and its associated conservation of angular momentum) that allows an accretion disk to form. Resolving this process numerically is therefore critical to capturing the formation of an accre- tion disk. We note that from the perspective of a reference frame co-rotating with the companion, the shifting of the accretion stream occurs due to non-inertial forces.
+- They calculate a formula for this impact parameter
+  - acceleration of secondary towards primary (or equivalently, centrifugal force in the rotating frame)
+    - g = v_o^2 / a
+  - BHL crossing time:
+    - t = r_B / v_r
+  - displacement of accretion column:
+    - d = 1/2 g t^2
+  - perpendicular displacement:
+    - b = d sin \theta = d v_o / v_r
+    - also called "accretion line impact parameter"
+  - Substituting:
+    - b = ( v_o^2 / 2 a) (r_B / v_r)^2 (v_o / v_r)
+    - b / a = 1/2 (r_B / a)^2 (v_o / v_r)^3
+  - or:
+    - b / r_B = 1/2 (r_B / a) (v_o / v_r)^3
+- Writing in terms of q and w
+  - r_B / a = 2 q / (1 + w^2)
+  - v_o / v_r = 1 / (1 + w^2)^{1/2}
+  - => b / r_B = q / (1 + w^2)^{5/2}
+  - So the disk is a bit smaller than the accretion radius when the wind is slow
+    - but when the wind is fast, it is much smaller
+  - In terms of the binary orbit a
+    - b / a = 2 q^2 / (1 + w^2)^{7/2}
+    - This gives a more qualitative cast to the description in the intro to section 4 of Malfait 2024
+- The angle:
+  - v_w = v_r cos \theta
+  - v_o = v_r sin \theta
+  - v_w = w v_o
+  - v_r = sqrt(v_o^2 + v_w^2) = v_o sqrt(1 + w^2)
+** Soker & Livio 1984
+- Modification to BHL accretion due to density gradients
+- This also produces a displacement of the accretion column from the symmetry axis, allowing a disk to form
+** Testing float reformatting function
+before: 1.49597870691e13| after: 1.4960e+1|3  desired: 1.4960e+13| 
+before: |1.49597870691e13 after: 1.4960e+1|3  desired: |1.4960e+13
+before: 1.495978706|91e13 after: 1.4960e+1|3  desired: 1.4960|e+13
